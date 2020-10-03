@@ -4,7 +4,6 @@
 <html lang="${sessionScope.lang}">
     <%@ include file="parts/head.jsp" %>
     <body>
-        <div class="alert alert-warning" role="alert"><b>Path:</b> ${path}</div>
         <%@ include file="parts/menu.jsp" %>
         <div class="container mt-5">
             <h1>${login}</h1>
