@@ -41,7 +41,9 @@ public class Controller extends HttpServlet {
         Command command = CommandContainer.get(path);
         String forward = command.execute(request, response);
 
-        if (forward != null) {
+        if (forward.contains("redirect:")) {
+            response.sendRedirect(forward.replace("redirect:", ""));
+        } else {
             request.getRequestDispatcher(forward).forward(request, response);
         }
     }
