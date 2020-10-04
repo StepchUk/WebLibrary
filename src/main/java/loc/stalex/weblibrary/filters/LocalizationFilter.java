@@ -1,11 +1,9 @@
 package loc.stalex.weblibrary.filters;
 
 import javax.servlet.*;
-import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
-@WebFilter(urlPatterns = {"/*"})
 public class LocalizationFilter implements Filter {
 
     @Override

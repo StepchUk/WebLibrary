@@ -1,10 +1,8 @@
 package loc.stalex.weblibrary.filters;
 
 import javax.servlet.*;
-import javax.servlet.annotation.WebFilter;
 import java.io.IOException;
 
-@WebFilter(urlPatterns = {"/*"})
 public class EncodeFilter implements Filter {
 
     @Override
