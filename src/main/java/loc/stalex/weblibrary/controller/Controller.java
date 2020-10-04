@@ -2,6 +2,7 @@ package loc.stalex.weblibrary.controller;
 
 import loc.stalex.weblibrary.command.Command;
 import loc.stalex.weblibrary.command.CommandContainer;
+import loc.stalex.weblibrary.utility.Utility;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -25,10 +26,7 @@ public class Controller extends HttpServlet {
     }
 
     private void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String path = URLDecoder.decode(
-                request.getRequestURI().substring(request.getContextPath().length()), StandardCharsets.UTF_8);
-
-        path = parseUrl(path);
+        String path = Utility.parseUrl(request);
 
         request.setAttribute("path", path);
 
@@ -46,17 +44,5 @@ public class Controller extends HttpServlet {
         } else {
             request.getRequestDispatcher(forward).forward(request, response);
         }
-    }
-
-    private String parseUrl(String path) {
-        path = path.replaceFirst("/", "");
-
-        if (path.isEmpty()) {
-            path = "index";
-        } else if (path.charAt(path.length() - 1) == '/') {
-            path = path.substring(0, path.length() - 1);
-        }
-
-        return path;
     }
 }

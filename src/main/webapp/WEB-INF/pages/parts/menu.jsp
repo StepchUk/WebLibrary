@@ -31,16 +31,29 @@
         </div>
         <div class="navbar-text mr-3">
             <c:choose>
-                <c:when test="${not empty userName}">${userName}</c:when>
-                <c:otherwise><fmt:message key="guest" /></c:otherwise>
+                <c:when test="${not empty sessionScope.user}">
+                    <a href="/profile">${sessionScope.user.firstName}</a>
+                </c:when>
+                <c:otherwise>
+                    <fmt:message key="guest" />
+                </c:otherwise>
             </c:choose>
         </div>
-        <a class="btn btn-outline-primary mr-2" href="/login">
-            <fmt:message key="button.login" />
-        </a>
-        <!--form action="/logout" method="post">
-            <button class="btn btn-primary" type="submit"><fmt:message key="button.logout" /> </button>
-        </form-->
-        <a class="btn btn-primary" href="/registration"><fmt:message key="button.registration" /> </a>
+        <c:choose>
+            <c:when test="${not empty sessionScope.user}">
+                <form action="/logout" method="post">
+                    <input type="hidden" name="old-url" value="${requestScope['javax.servlet.forward.request_uri']}" />
+                    <button class="btn btn-primary" type="submit">
+                        <fmt:message key="button.logout" />
+                    </button>
+                </form>
+            </c:when>
+            <c:otherwise>
+                <a class="btn btn-outline-primary mr-2" href="/login">
+                    <fmt:message key="button.login" />
+                </a>
+                <a class="btn btn-primary" href="/registration"><fmt:message key="button.registration" /> </a>
+            </c:otherwise>
+        </c:choose>
     </div>
 </nav>
