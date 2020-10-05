@@ -12,8 +12,8 @@ import java.util.Optional;
 public class UserDaoImpl implements UserDao {
 
     public static final String SQL_NEW_USER =
-            "insert into \"user\" (first_name, last_name, email, password, role) values (?, ?, ?, ?, ?)";
-    public static final String SQL_SELECT_USER_BY_EMAIL = "SELECT * FROM \"user\" WHERE email = ?";
+            "insert into users (first_name, last_name, email, password, role) values (?, ?, ?, ?, ?)";
+    public static final String SQL_SELECT_USER_BY_EMAIL = "SELECT * FROM users WHERE email = ?";
 
     private final Connection connection;
 
