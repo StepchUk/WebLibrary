@@ -1,5 +1,6 @@
 package loc.stalex.weblibrary.command;
 
+import loc.stalex.weblibrary.service.BookService;
 import loc.stalex.weblibrary.service.UserService;
 
 import java.util.HashMap;
@@ -15,6 +16,7 @@ public class CommandContainer {
         COMMANDS.put("login", new CommandLogin(new UserService()));
         COMMANDS.put("logout", new CommandLogout());
         COMMANDS.put("profile", new CommandProfile());
+        COMMANDS.put("books-list", new CommandBooks(new BookService()));
         COMMANDS.put("404", new Command404());
     }
 
